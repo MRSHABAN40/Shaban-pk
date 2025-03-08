@@ -3,9 +3,28 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>SHABAN MD V5</title>
+  <title>SHABAN-MD</title>
   <style>
-    /* Body Style with Softer Changing Background */
+    /* Aurora Lights Animated Background */
+    body::before {
+      content: "";
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: linear-gradient(270deg, #ff7eb3, #ff758c, #8e54e9, #4776e6, #00ffaa);
+      background-size: 400% 400%;
+      z-index: -1;
+      animation: aurora 10s infinite ease-in-out;
+    }
+
+    @keyframes aurora {
+      0% { background-position: 0% 50%; }
+      50% { background-position: 100% 50%; }
+      100% { background-position: 0% 50%; }
+    }
+
     body {
       margin: 0;
       padding: 0;
@@ -16,67 +35,57 @@
       font-family: Arial, sans-serif;
       text-align: center;
       color: #fff;
-      animation: changeBg 5s infinite;
       flex-direction: column;
     }
 
-    /* Softer & Darker Background Color Animation */
-    @keyframes changeBg {
-      0% { background-color: #2c3e50; }
-      20% { background-color: #34495e; }
-      40% { background-color: #5d6d7e; }
-      60% { background-color: #566573; }
-      80% { background-color: #1c2833; }
-      100% { background-color: #212f3c; }
-    }
-
-    /* Start Button */
-    #start-button {
-      padding: 15px 30px;
-      font-size: 20px;
-      font-weight: bold;
-      color: #fff;
-      background: #00ffee;
-      border: none;
-      border-radius: 25px;
-      cursor: pointer;
-      animation: rainbow-bg 3s infinite;
-    }
-
-    /* Stylish, Colorful Bordered Box (Smaller Size) */
     .main-box {
       padding: 15px;
       background: rgba(0, 0, 0, 0.85);
-      border: 4px solid;
-      border-radius: 15px;
+      border: 3px solid;
+      border-radius: 12px;
       display: inline-block;
       width: 250px;
       animation: rainbow-border 3s linear infinite;
-      box-shadow: 0 0 15px #fff;
+      box-shadow: 0 0 10px #fff;
     }
 
-    /* Animated Rainbow Border */
     @keyframes rainbow-border {
       0% { border-color: #ff0000; }
-      20% { border-color: #ff7300; }
-      40% { border-color: #ffee00; }
-      60% { border-color: #47ff00; }
-      80% { border-color: #00ffee; }
       100% { border-color: #8a00ff; }
     }
 
-    /* Live Digital Clock */
+    .rainbow-text {
+      font-size: 28px;
+      font-weight: bold;
+      text-transform: uppercase;
+      background-image: linear-gradient(45deg, #ff0000, #ff7300, #ffeb00, #47ff00, #00ffee, #0047ff, #8a00ff);
+      background-size: 400% 400%;
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      animation: rainbow-text 3s infinite linear, blink 1.5s infinite alternate;
+    }
+
+    @keyframes blink {
+      0% { opacity: 1; }
+      100% { opacity: 0.6; }
+    }
+
+    .bot-image {
+      width: 100%;
+      border-radius: 8px;
+      margin-top: 10px;
+    }
+
     #digital-clock {
       font-size: 24px;
       font-weight: bold;
-      margin-bottom: 10px;
+      margin-top: 10px;
       display: flex;
       align-items: center;
       justify-content: center;
       gap: 8px;
     }
 
-    /* Animated Pakistan Flag */
     .pak-flag {
       width: 24px;
       height: 24px;
@@ -88,77 +97,11 @@
       100% { transform: rotate(10deg); }
     }
 
-    /* News-style Message */
-    .news-message {
-      font-size: 12px;
-      font-weight: bold;
-      margin-bottom: 8px;
-      padding: 6px;
-      background: #000;
-      color: #00ffee;
-      border: 2px solid #00ffee;
-      border-radius: 10px;
-      animation: rainbow-border 3s linear infinite;
-    }
-
-    /* GitHub Container */
-    .github-container {
+    .button {
       display: flex;
       align-items: center;
       justify-content: center;
-      gap: 8px;
-      margin-bottom: 8px;
-    }
-
-    /* GitHub Logo */
-    .github-logo {
-      width: 30px;
-      height: 30px;
-      animation: spin 5s linear infinite;
-    }
-
-    @keyframes spin {
-      0% { transform: rotate(0deg); }
-      100% { transform: rotate(360deg); }
-    }
-
-    /* GitHub Username */
-    .github-username {
-      font-size: 16px;
-      font-weight: bold;
-      animation: rainbow 3s infinite;
-    }
-
-    @keyframes rainbow {
-      0% { color: #ff0000; }
-      100% { color: #00ffee; }
-    }
-
-    /* SHABAN MD V5 Colorful Blinking Effect */
-    .rainbow-text {
-      font-size: 24px;
-      font-weight: bold;
-      white-space: nowrap;
-      animation: rainbow-text 3s infinite, blink-caret 0.8s step-end infinite;
-    }
-
-    @keyframes blink-caret {
-      0%, 100% { opacity: 1; }
-      50% { opacity: 0.5; }
-    }
-
-    @keyframes rainbow-text {
-      0% { color: #ff0000; }
-      20% { color: #ff7300; }
-      40% { color: #ffee00; }
-      60% { color: #47ff00; }
-      80% { color: #00ffee; }
-      100% { color: #8a00ff; }
-    }
-
-    /* Buttons */
-    .button {
-      display: inline-block;
+      gap: 5px;
       padding: 6px 12px;
       margin: 6px;
       font-size: 12px;
@@ -181,57 +124,65 @@
       color: #000;
       font-weight: bold;
     }
+
+    .icon {
+      width: 16px;
+      height: 16px;
+    }
   </style>
 </head>
 <body>
-  <button id="start-button" onclick="startWebsite()">Start Website</button>
+  <div class="main-box">
+    <h1 class="rainbow-text">SHABAN MD</h1>
 
-  <div id="main-content" style="display: none;">
-    <div class="main-box">
-      <div id="digital-clock">
-        <span id="time"></span>
-        <img src="https://upload.wikimedia.org/wikipedia/commons/3/32/Flag_of_Pakistan.svg" alt="Pakistan Flag" class="pak-flag">
-      </div>
+    <!-- Bot Image Added Below Title -->
+    <img src="https://i.ibb.co/4ZXtNLWB/shaban-md.jpg" alt="Bot Image" class="bot-image">
 
-      <div class="news-message">
-        CREATED BY MR SHABAN FOR MORE UPDATE JOIN MY WHATSAPP CHANNEL
-      </div>
-
-      <!-- GitHub Container with Link -->
-      <div class="github-container">
-        <a href="https://github.com/MRSHABAN40" target="_blank" style="display: flex; align-items: center; gap: 8px; text-decoration: none; color: inherit;">
-          <img src="https://github.githubassets.com/images/modules/logos_page/GitHub-Mark.png" alt="GitHub Logo" class="github-logo">
-          <span class="github-username">MRSHABAN40</span>
-        </a>
-      </div>
-
-      <h1 class="rainbow-text">SHABAN MD V5</h1>
-
-      <a href="https://gay-bessie-shabansobxmd-6fbedfb2.koyeb.app/pair" class="button">Pair 1</a>
-      <a href="https://determined-vicky-mrshabankha-f9fac2fe.koyeb.app/pair" class="button">Pair 2</a>
-      <a href="https://github.com/MRSHABAN40/SHABAN-MD-V5/fork" class="button">FORK BOT</a>
-      <a href="https://whatsapp.com/channel/0029VazjYjoDDmFZTZ9Ech3O" class="button">WHATSAPP CHANNEL</a>
-      <a href="https://wa.me/923043788282" class="button">ADMIN-SHABAN</a>
+    <!-- Digital Clock with Pakistan Flag -->
+    <div id="digital-clock">
+      <span id="time"></span>
+      <img src="https://upload.wikimedia.org/wikipedia/commons/3/32/Flag_of_Pakistan.svg" alt="Pakistan Flag" class="pak-flag">
     </div>
+
+    <a href="https://determined-vicky-mrshabankha-f9fac2fe.koyeb.app/pair" class="button">
+      <img src="https://i.ibb.co/8n2mZ3g6/shaban-md.jpg" alt="Koyeb Logo" class="icon">
+      PAIR 1
+    </a>
+    <a href="https://gay-bessie-shabansobxmd-6fbedfb2.koyeb.app/pair" class="button">
+      <img src="https://i.ibb.co/8n2mZ3g6/shaban-md.jpg" alt="Koyeb Logo" class="icon">
+      PAIR 2
+    </a>
+
+    <a href="https://github.com/MRSHABAN40" target="_blank" class="button">
+      <img src="https://github.githubassets.com/images/modules/logos_page/GitHub-Mark.png" alt="GitHub Logo" class="icon">
+      GITHUB PROFILE
+    </a>
+
+    <a href="https://github.com/MRSHABAN40/SHABAN-MD-V5/fork" target="_blank" class="button">
+      <img src="https://github.githubassets.com/images/modules/logos_page/GitHub-Mark.png" alt="GitHub Logo" class="icon">
+      FORK ON GITHUB
+    </a>
+
+    <a href="https://whatsapp.com/channel/0029VazjYjoDDmFZTZ9Ech3O" target="_blank" class="button">
+      <img src="https://upload.wikimedia.org/wikipedia/commons/6/6b/WhatsApp.svg" alt="WhatsApp Logo" class="icon">
+      WhatsApp Channel
+    </a>
+
+    <a href="https://wa.me/923043788282" target="_blank" class="button">
+      <img src="https://upload.wikimedia.org/wikipedia/commons/6/6b/WhatsApp.svg" alt="WhatsApp Logo" class="icon">
+      ADMIN CONTACT
+    </a>
   </div>
 
   <script>
-    function startWebsite() {
-      document.getElementById('start-button').style.display = 'none';
-      document.getElementById('main-content').style.display = 'block';
-      updateTime();
-      setInterval(updateTime, 1000);
-    }
-
+    // Live Digital Clock Script
     function updateTime() {
       const now = new Date();
-      let hours = now.getHours();
-      const minutes = String(now.getMinutes()).padStart(2, '0');
-      const seconds = String(now.getSeconds()).padStart(2, '0');
-      const ampm = hours >= 12 ? 'PM' : 'AM';
-      hours = hours % 12 || 12;
-      document.getElementById('time').innerText = `${hours}:${minutes}:${seconds} ${ampm}`;
+      document.getElementById('time').innerText = now.toLocaleTimeString();
     }
+
+    setInterval(updateTime, 1000);
+    updateTime();
   </script>
 </body>
 </html>
